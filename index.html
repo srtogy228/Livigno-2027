@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ливиньо: Выбор проживания</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f6f9; color: #333; padding: 20px; margin: 0; }
+  .container { max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  h2 { font-size: 20px; color: #1a1a1a; text-align: center; margin-bottom: 20px; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+  .tab-btn { flex: 1; padding: 12px 8px; background: #e9ecef; color: #495057; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 13px; text-align: center; transition: all 0.2s; }
+  .tab-btn.active-center { background: #0d6efd; color: white; }
+  .tab-btn.active-teola { background: #198754; color: white; }
+  .tab-btn.active-bus { background: #6f42c1; color: white; }
+  .content { display: none; padding: 10px 0; font-size: 15px; line-height: 1.6; }
+  .content.active { display: block; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  .highlight { background: #f8f9fa; padding: 12px; border-radius: 8px; border-left: 4px solid #0d6efd; margin-top: 15px; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>🏔️ Ливиньо: Выбор жилья и логистика</h2>
+  
+  <div class="tabs">
+    <button class="tab-btn active-center" id="b1" onclick="switchTab(1)">🏢 Центр</button>
+    <button class="tab-btn" id="b2" onclick="switchTab(2)">🌲 Теола</button>
+    <button class="tab-btn" id="b3" onclick="switchTab(3)">🚌 Автобусы</button>
+  </div>
 
+  <div class="content active" id="c1">
+    <h3 style="color: #0d6efd; margin-top:0;">Вариант 1: Центр (Chalet 1816)</h3>
+    <ul>
+      <li><b>Локация:</b> Самый эпицентр курортной жизни на улице Via Saroch.</li>
+      <li><b>Подъемники:</b> Склоны Mottolino (№3) и учебный Campo Scuola (№23) в 1–2 минутах пешком.</li>
+      <li><b>Плюсы:</b> Рестораны, магазины Duty-Free и остановка автобуса (в 20 метрах) — всё у порога. Никакой привязки к транспорту.</li>
+    </ul>
+    <div class="highlight">Идеально для тех, кто любит быть в гуще событий и не хочет тратить время на дорогу до подъёмников.</div>
+  </div>
+
+  <div class="content" id="c2">
+    <h3 style="color: #198754; margin-top:0;">Вариант 2: Теола (Шале Кристофера)</h3>
+    <ul>
+      <li><b>Локация:</b> Тихое и видовое место (зона Теола).</li>
+      <li><b>Бонусы:</b> Хозяин Кристофер держит свою горнолыжную школу (обещал скидки на обучение), а его брат Дмитрий говорит по-русски. В апартаментах есть отдельные удобные комнаты (например, для Евы) и гидромассаж.</li>
+      <li><b>Логистика:</b> Автобусы ходят каждые 10–30 минут прямо от шале. Ехать до центра 5–10 минут.</li>
+      <li><b>Нюанс:</b> Бесплатный транспорт ходит с 7:30 до 20:00. Позже — пешком под горку (15–20 минут) или на такси.</li>
+    </ul>
+    <div class="highlight" style="border-left-color: #198754;">Отличный выбор для спокойного отдыха, красивых видов и дружеской атмосферы со скидками на обучение.</div>
+  </div>
+
+  <div class="content" id="c3">
+    <h3 style="color: #6f42c1; margin-top:0;">Как работает Freebus</h3>
+    <ul>
+      <li><b>График работы:</b> Ежедневно с <b>7:30 до 20:00</b> (в пиковые часы рейсов больше).</li>
+      <li><b>Интервал:</b> Каждые 10–30 минут в зависимости от линии.</li>
+      <li><b>Стоимость:</b> Абсолютно <b>бесплатно</b> для всех пассажиров.</li>
+      <li><b>Снаряжение:</b> Лыжи и сноуборды провозить можно без проблем и доплат.</li>
+    </ul>
+    <div class="highlight" style="border-left-color: #6f42c1;">Автобусная сеть отлично развита, добраться из Теолы в центр или к подъемникам очень просто.</div>
+  </div>
+</div>
+
+<script>
+  function switchTab(n) {
+    document.getElementById('c1').className = 'content';
+    document.getElementById('c2').className = 'content';
+    document.getElementById('c3').className = 'content';
+    document.getElementById('b1').className = 'tab-btn';
+    document.getElementById('b2').className = 'tab-btn';
+    document.getElementById('b3').className = 'tab-btn';
+
+    if(n===1) {
+      document.getElementById('c1').className = 'content active';
+      document.getElementById('b1').className = 'tab-btn active-center';
+    } else if(n===2) {
+      document.getElementById('c2').className = 'content active';
+      document.getElementById('b2').className = 'tab-btn active-teola';
+    } else {
+      document.getElementById('c3').className = 'content active';
+      document.getElementById('b3').className = 'tab-btn active-bus';
+    }
+  }
+</script>
+</body>
+</html>
